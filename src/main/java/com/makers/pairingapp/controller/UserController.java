@@ -4,10 +4,7 @@ import com.makers.pairingapp.dao.ApplicationUserDAO;
 import com.makers.pairingapp.model.ApplicationUser;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 
@@ -30,6 +27,12 @@ public class UserController {
     user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
     applicationUserDAO.save(user);
   }
+
+  @GetMapping("/{user_id}")
+  public ApplicationUser getUser(@PathVariable(value = "user_id") ApplicationUser user) {
+    return user;
+  }
+
 
 
 }

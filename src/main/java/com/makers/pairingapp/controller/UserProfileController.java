@@ -34,10 +34,11 @@ public class UserProfileController {
             }
             System.out.println(entry.getKey() + ":" + entry.getValue());
             Language language = languageDAO.findByName(entry.getKey());
+            System.out.println("TEST: "+language);
             LanguagePreference newLanguagePreference = new LanguagePreference();
             newLanguagePreference.setUser(user);
             newLanguagePreference.setLanguage(language);
-            newLanguagePreference.setSkill(entry.getValue());
+            newLanguagePreference.setSkill(Integer.parseInt(entry.getValue()));
             languagePreferenceDAO.save(newLanguagePreference);
         }
         user.setActive(true);
